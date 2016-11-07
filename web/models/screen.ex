@@ -5,7 +5,7 @@ defmodule Grimoire.Screen do
     field :url, :string
 
     belongs_to :book, Grimoire.Book
-    has_many :comments, Grimoire.Comment
+    has_many :comments, Grimoire.Comment, on_delete: :delete_all
 
     timestamps()
   end

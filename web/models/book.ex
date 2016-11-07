@@ -5,8 +5,8 @@ defmodule Grimoire.Book do
     field :title, :string
     field :description, :string
 
-    has_many :screens, Grimoire.Screen
-    has_many :slides, Grimoire.Slide
+    has_many :screens, Grimoire.Screen, on_delete: :delete_all
+    has_many :slides, Grimoire.Slide, on_delete: :delete_all
 
     timestamps()
   end
