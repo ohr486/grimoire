@@ -1,11 +1,11 @@
-version: 2
+version: 2.1
 
 workflows:
   ci-workflow:
     jobs:
       - build:
-        context:
-          - ohr486-circleci-notification
+          context:
+            - ohr486-circleci-notification
 
 jobs:
   build:
