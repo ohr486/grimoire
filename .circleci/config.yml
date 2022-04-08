@@ -1,5 +1,12 @@
 version: 2
 
+workflows:
+  ci-workflow:
+    jobs:
+      - build:
+        context:
+          - ohr486-circleci-notification
+
 jobs:
   build:
     docker:
