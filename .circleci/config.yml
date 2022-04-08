@@ -3,15 +3,6 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.9.3
 
-workflows:
-  test-and-deploy:
-    jobs:
-      - build:
-      - slack/notify:
-          branch_pattern: master
-          context: ohr486-circleci-notification
-          channel: CQE0BFK8X
-
 jobs:
   build:
     docker:
@@ -28,14 +19,12 @@ jobs:
     steps:
       - checkout
       - run: env # for debug
-
       - run: mix local.hex --force
       - run: mix local.rebar --force
       - restore_cache:
           keys:
             - v1-build-cache-{{ .Branch }}
             - v1-build-cache
-
       - run:
           command: mix do deps.get, compile
       - save_cache:
@@ -44,9 +33,16 @@ jobs:
       - save_cache:
           key: v1-build-cache-{{ .Branch }}
           paths: "_build"
-
       - run:
           command: mix lint
-
       - run:
           command: mix test
+      - slack/notify:
+          event: always
+
+workflows:
+  test-and-deploy:
+    jobs:
+      - build:
+          context: ohr486-circleci-notification
+
