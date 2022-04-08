@@ -4,11 +4,13 @@ orbs:
   slack: circleci/slack@4.9.3
 
 workflows:
-  ci-workflow:
+  test-and-deploy:
     jobs:
       - build:
-          context:
-            - ohr486-circleci-notification
+      - slack/notify:
+          branch_pattern: master
+          context: ohr486-circleci-notification
+          channel: CQE0BFK8X
 
 jobs:
   build:
