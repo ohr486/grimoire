@@ -7,8 +7,8 @@ import Config
 # Run `mix help test` for more information.
 config :grimoire, Grimoire.Repo,
   username: "root",
-  password: "",
-  hostname: "localhost",
+  password: "root",
+  hostname: "#{System.get_env("MIX_TEST_DB_HOST")}",
   database: "grimoire_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
