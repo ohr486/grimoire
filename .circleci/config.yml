@@ -1,0 +1,42 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/elixir:1.13-node
+        environment:
+          MIX_ENV: test
+          MIX_TEST_DB_HOST: localhost
+      - image: circleci/mysql:8.0
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: env # for debug
+
+      - run: mix local.hex --force
+      - run: mix local.rebar --force
+      - restore_cache:
+          keys:
+            - v1-build-cache-{{ .Branch }}
+            - v1-build-cache
+
+      - run:
+          # working_directory: app
+          command: mix do deps.get, compile
+      - save_cache:
+          # key: v1-mix-cache-{{ .Branch }}-{{ checksum "app/mix.lock" }}
+          key: v1-mix-cache-{{ .Branch }}-{{ checksum "mix.lock" }}
+          # paths: "app/deps"
+          paths: "deps"
+      - save_cache:
+          key: v1-build-cache-{{ .Branch }}
+          # paths: "app/_build"
+          paths: "_build"
+
+      - run:
+          # working_directory: app
+          command: mix test
