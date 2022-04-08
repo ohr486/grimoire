@@ -6,8 +6,8 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :grimoire, Grimoire.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "root",
+  password: "",
   hostname: "localhost",
   database: "grimoire_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
@@ -17,7 +17,7 @@ config :grimoire, Grimoire.Repo,
 # you can enable the server option below.
 config :grimoire, GrimoireWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "kSR5BlBQH8BuDsgoB59x/eLaqm9hc3CPI8IsaaIYPPNax8aQiFfyxSeZr+H42piD",
+  secret_key_base: "koFVWB+GXJbfkdtx4eFoIQNnMRtvDaxNqgZk8hI9/ux+Rox007X2LN8ugrfaPqwu",
   server: false
 
 # In test we don't send emails.

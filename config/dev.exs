@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :grimoire, Grimoire.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "root",
+  password: "",
   hostname: "localhost",
   database: "grimoire_dev",
   show_sensitive_data_on_connection_error: true,
@@ -22,7 +22,7 @@ config :grimoire, GrimoireWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "5RnHEOKdOVeGs+uV2sinFZ1g4Y2RQYKKLqQx6C8Ijrj9U8rPbWGa5cUdUrs6KjjB",
+  secret_key_base: "e8nfFQmS0R7OcmUs2cCWmZU4+G6rbV+SiLGLnuWP4XqcxSJGBl/x/8HVT2gwC2qn",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}

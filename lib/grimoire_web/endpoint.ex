@@ -7,7 +7,7 @@ defmodule GrimoireWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_grimoire_key",
-    signing_salt: "ERjseds3"
+    signing_salt: "koAHYHJj"
   ]
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]

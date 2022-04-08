@@ -15,7 +15,7 @@ config :grimoire, GrimoireWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: GrimoireWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Grimoire.PubSub,
-  live_view: [signing_salt: "2O7XtKIf"]
+  live_view: [signing_salt: "o+CbtXoo"]
 
 # Configures the mailer
 #
