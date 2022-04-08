@@ -35,7 +35,8 @@ defmodule Grimoire.MixProject do
     [
       {:phoenix, "~> 1.6.6"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_erd, "~> 0.4", only: :dev},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:ecto_erd, "~> 0.4.2", only: :dev},
       {:ecto_sql, "~> 3.6"},
       {:myxql, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
@@ -65,6 +66,7 @@ defmodule Grimoire.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      lint: ["credo"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"],
       erd: ["ecto.reset", "ecto.gen.erd"]
     ]
