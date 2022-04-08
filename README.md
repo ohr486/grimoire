@@ -1,19 +1,25 @@
 # Grimoire
 
-To start your Phoenix server:
+## CI status
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+[![CircleCI](https://circleci.com/gh/ohr486/grimoire/tree/master.svg?style=svg)](https://circleci.com/gh/ohr486/grimoire/tree/master)
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## How to setup local env
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+```bash
+$ git clone git@github.com:ohr486/grimoire.git
+$ cd grimoire
+$ docker-compose build
+$ docker-compose run app mix setup
+$ docker-compose run app mix ecto.migrate
+$ docker-compose up -d
+```
 
-## Learn more
+## ERD
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```bash
+$ cd app
+$ docker-compose run app mix erd
+$ ./open.erd
+```
+
